@@ -35,8 +35,15 @@
         <h1>No Users Found!</h1>
       <% } %>
     </div>
-    <% if (userExists === true) { %>
+    <% if(userExists) { %>
       <h2>User Already Exists!</h2>
+      <!-- <script type="javascript">
+        showAlert('User Exists!');
+
+        showAlert = (err) => {
+          window.alert(err);
+        }
+      </script> -->
     <% } %>
 </body>
 </html>
