@@ -35,11 +35,8 @@
         <h1>No Users Found!</h1>
       <% } %>
     </div>
-
-  <%= userExists %>
-  <% if (userExists === true) { %>
-      <p>User Already Exists!</p>
-  <% } %>
+    <% if (userExists === true) { %>
+      <h2>User Already Exists!</h2>
+    <% } %>
 </body>
-
 </html>

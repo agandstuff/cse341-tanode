@@ -13,19 +13,18 @@ router.get('/', (req, res, next) => {
     activeTA02: true, // For HBS
     contentCSS: true, // For HBS
     users: users,
-    userExists: false
+    userExists: userExists
   });
 });
 
 router.post('/addUser', (req, res, next) => {
   const username = { name: req.body.username };
-  console.log(username);
   if(users.some(user => user.name === req.body.username)) {
     userExists = true;
   } else {
+    userExists = false;
     users.push(username);
   };
-  console.log(users);
   res.redirect('/ta02');
 });
 
@@ -37,8 +36,6 @@ router.post('/removeUser', (req, res, next) => {
   if (index !== -1) {
     users.splice(index, 1);
   }
-  // console.log(index);
-  // console.log(users);
   res.redirect('/ta02');
 });
 
