@@ -18,8 +18,8 @@
           <button class="ta02button" type="submit">Add To Users</button>
         </form>
         <form action="/ta02/removeUser" method="POST">
-          <label for="remUser">Remove User</label>
-          <input class="ta02input" type="text" name="remUser">
+          <label for="remName">Remove User</label>
+          <input class="ta02input" type="text" name="remUsername">
           <button class="ta02button" type="submit">Remove User</button>
           </form>
       </div>
@@ -36,7 +36,10 @@
       <% } %>
     </div>
 
-
+  <%= userExists %>
+  <% if (userExists === true) { %>
+      <p>User Already Exists!</p>
+  <% } %>
 </body>
 
 </html>
