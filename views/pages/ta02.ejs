@@ -12,11 +12,28 @@
         <h1>
           <%= title %>
         </h1>
-        <p>This is the placeholder for Team Activity 02</p>
+        <form action="/ta02/addUser" method="POST">
+          <label for="name">Add User</label>
+          <input class="ta02input" type="text" name="username">
+          <button class="ta02button" type="submit">Add To Users</button>
+        </form>
+        <form action="/ta02/removeUser" method="POST">
+          <label for="remUser">Remove User</label>
+          <input class="ta02input" type="text" name="remUser">
+          <button class="ta02button" type="submit">Remove User</button>
+          </form>
       </div>
     </div>
     <div class="container">
-
+      <% if (users.length > 0) { %>
+        <ul>
+            <% users.forEach((user) => { %>
+                <li><%= user.name %></li>
+            <% }) %>
+        </ul>
+      <% } else { %>
+        <h1>No Users Found!</h1>
+      <% } %>
     </div>
 
 
