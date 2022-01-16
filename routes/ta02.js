@@ -22,6 +22,7 @@ router.get('/', (req, res, next) => {
 router.post('/addUser', (req, res, next) => {
   const username = { name: req.body.username };
   if(users.some(user => user.name === req.body.username)) {
+    noUser = false;
     userExists = true;
   } else {
     noUser = false;
@@ -43,6 +44,7 @@ router.post('/removeUser', (req, res, next) => {
     userExists = false;
     noUser = false;
   } else {
+    userExists = false;
     noUser = true;
   };
   res.redirect('/ta02');
