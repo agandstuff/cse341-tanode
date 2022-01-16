@@ -25,15 +25,18 @@
       </div>
     </div>
     <div>
+      <!-- checks boolean values from js file to see if user exists on users array, if user appears on list when trying to add additional user, displays error below.  -->
       <% if(userExists) { %>
         <h2 class="ta02__user-exists">User Already Exists</h2> 
       <% } %>
+      <!-- checks boolean values from js file to see if user exists on users array, if user does not appear on list when trying to remove a user, displays error below.  -->
       <% if(noUser) { %>
         <h2 class="ta02__no-user">No User Found</h2>
       <% } %>
     </div>
     <div class="container">
       <h2>Users: </h2>
+      <!-- checks to see if users array is empty, if not, loops through and displays, if not displays message. -->
       <% if (users.length > 0) { %>
         <ul>
             <% users.forEach((user) => { %>
