@@ -24,7 +24,16 @@
           </form>
       </div>
     </div>
+    <div>
+      <% if(userExists) { %>
+        <h2 class="ta02__user-exists">User Already Exists</h2> 
+      <% } %>
+      <% if(noUser) { %>
+        <h2 class="ta02__no-user">No User Found</h2>
+      <% } %>
+    </div>
     <div class="container">
+      <h2>Users: </h2>
       <% if (users.length > 0) { %>
         <ul>
             <% users.forEach((user) => { %>
@@ -35,15 +44,6 @@
         <h1>No Users Found!</h1>
       <% } %>
     </div>
-    <% if(userExists) { %>
-      <h2>User Already Exists!</h2>
-      <!-- <script type="javascript">
-        showAlert('User Exists!');
 
-        showAlert = (err) => {
-          window.alert(err);
-        }
-      </script> -->
-    <% } %>
 </body>
 </html>

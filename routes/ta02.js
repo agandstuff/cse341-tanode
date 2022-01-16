@@ -5,6 +5,7 @@ const router = express.Router();
 
 const users = [{name:'Helen'}, {name: 'Don'}, {name: 'Linda'}];
 let userExists = false;
+let noUser = false;
 
 router.get('/', (req, res, next) => {
   res.render('pages/ta02', {
@@ -13,7 +14,8 @@ router.get('/', (req, res, next) => {
     activeTA02: true, // For HBS
     contentCSS: true, // For HBS
     users: users,
-    userExists: userExists
+    userExists: userExists,
+    noUser: noUser
   });
 });
 
@@ -22,6 +24,7 @@ router.post('/addUser', (req, res, next) => {
   if(users.some(user => user.name === req.body.username)) {
     userExists = true;
   } else {
+    noUser = false;
     userExists = false;
     users.push(username);
   };
@@ -30,12 +33,18 @@ router.post('/addUser', (req, res, next) => {
 
 router.post('/removeUser', (req, res, next) => {
   const remUser = req.body.remUsername;
-  const index = users.map(function(o) {
-    return o.name;
-  }).indexOf(remUser);
-  if (index !== -1) {
-    users.splice(index, 1);
-  }
+  if(users.some(user => user.name === req.body.remUsername)) {
+    const index = users.map(function(o) {
+      return o.name;
+    }).indexOf(remUser);
+    if (index !== -1) {
+      users.splice(index, 1);
+    };
+    userExists = false;
+    noUser = false;
+  } else {
+    noUser = true;
+  };
   res.redirect('/ta02');
 });
 

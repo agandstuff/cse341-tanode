@@ -49,3 +49,13 @@
 .ta02button {
   color: black;
 }
+
+.ta02__user-exists {
+  margin-left: 4rem;
+  color: red;
+}
+
+.ta02__no-user {
+  margin-left: 4rem;
+  color: red;
+}
